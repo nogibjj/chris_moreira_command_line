@@ -12,6 +12,14 @@ Key Package Requirenments:
 
 Databricks environment variables properly set up in a .env file (e.g., DATABRICKS_API_KEY, SERVER_HOST, SQL_HTTP). These will be automatically loaded by the tool.
 
+# How to Install:
+Run the following in your command in bash:
+```bash
+
+python setup.py install
+
+```
+
 # Action 1: Extract Dataset
 Description: Extracts data from a predefined source and saves it locally.
 
