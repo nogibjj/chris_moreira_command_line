@@ -13,7 +13,6 @@ logging.basicConfig(level=logging.DEBUG)
 load_dotenv(override=True)
 
 
-# Load the CSV file and insert it into Databricks
 def load(dataset="data/Spotify_Most_Streamed_Songs.csv"):
     """Transforms and Loads data into the Databricks database"""
     # Check if the dataset exists before proceeding
@@ -27,9 +26,9 @@ def load(dataset="data/Spotify_Most_Streamed_Songs.csv"):
     logging.debug(f"Columns in the dataset: {df.columns}")
 
     # Retrieve environment variables
-    server_h = os.getenv("server_host")
-    access_token = os.getenv("databricks_api_key")
-    http_path = os.getenv("sql_http")
+    server_h = os.getenv("SERVER_HOST")
+    access_token = os.getenv("DATABRICKS_API_KEY")
+    http_path = os.getenv("SQL_HTTP")
 
     # Error handling for missing environment variables
     if not server_h or not access_token or not http_path:
@@ -44,7 +43,6 @@ def load(dataset="data/Spotify_Most_Streamed_Songs.csv"):
     )
     logging.debug(f"Connecting to: {full_url}")
 
-    # Databricks connection logic
     try:
         with sql.connect(
             server_hostname=server_h,
@@ -58,7 +56,6 @@ def load(dataset="data/Spotify_Most_Streamed_Songs.csv"):
             c.execute("SHOW TABLES FROM default LIKE 'csm_87_Spotify*'")
             result = c.fetchall()
 
-            # Create table if it doesn't exist
             if not result:
                 logging.debug(
                     "Table does not exist. Creating csm_87_SpotifyDB table..."
@@ -93,7 +90,6 @@ def load(dataset="data/Spotify_Most_Streamed_Songs.csv"):
                 logging.debug("Table created successfully.")
 
             logging.debug(f"Data from CSV: \n{df.head()}")
-
             c.close()
 
         return "success"
