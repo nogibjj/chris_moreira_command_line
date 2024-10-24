@@ -52,8 +52,5 @@ jobs:
       - name: Query data (sort)
         run: make query_sort
 
-      - name: Generate and push SQL log
-        run: make generate_and_push
-
       - name: Deploy
         run: make deploy
