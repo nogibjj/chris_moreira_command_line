@@ -1,1 +1,65 @@
+# Ignore the .env file
 .env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Setuptools distribution folder
+*.egg-info/
+build/
+dist/
+
+# C extensions
+*.so
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Virtual environments
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# VSCode settings
+.vscode/
+
+# Python-specific files
+*.pyo
+*.pyd
+
+# Test binaries
+*.egg
+
+# Binary files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.svg
+*.ico
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# System-specific files (macOS, Windows, Linux)
+.DS_Store
+Thumbs.db
