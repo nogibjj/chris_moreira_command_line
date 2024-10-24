@@ -1,4 +1,4 @@
-# SQL Database in Databricks Project
+# Command Line Project: Produces a Command Line for the SQL Database that was created in Databricks
 # Status Badge for Sucessful Run
 [![CI/CD](https://github.com/nogibjj/chris_moreira_command_line/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/chris_moreira_command_line/actions/workflows/cicd.yml)
 
