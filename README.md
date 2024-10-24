@@ -7,7 +7,10 @@
 
 
 # Project Purpose
-The main file for this project creates a command line that performs the following SQL operations in databricks: extract, transform_data, query the data with a join, aggregaiton and sorting. See below the command line operations in bash:
+The main file for this project creates a command line that performs the following SQL operations in databricks: extract, transform_data, query the data with a join, aggregaiton and sorting. For further information, please refer to the user_guide.md specified in this repository. 
+
+
+See below the command line operations in bash:
 
 ```bash
 
