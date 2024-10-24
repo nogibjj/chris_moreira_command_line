@@ -1,6 +1,6 @@
-name: CICD
+name: CI/CD
 
-on: 
+on:
   push:
     branches: [ "main" ]
   pull_request:
@@ -9,18 +9,51 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix: # Matrix strategy for future scalability (if needed)
+        python-version: [3.8]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     env:
-      databricks_api_key: ${{ secrets.DATABRICKS_API_KEY }}
-      server_host: ${{ secrets.SERVER_HOST }}
-      sql_http: ${{ secrets.SQL_HTTP }}
+      DATABRICKS_API_KEY: ${{ secrets.DATABRICKS_API_KEY }}
+      SERVER_HOST: ${{ secrets.SERVER_HOST }}
+      SQL_HTTP: ${{ secrets.SQL_HTTP }}
+
     steps:
       - uses: actions/checkout@v3
-      - name: install packages
+
+      - name: Install packages
         run: make install
-      - name: format
+
+      - name: Setup local package
+        run: make setup_package
+
+      - name: Format code
         run: make format
-      - name: lint
+
+      - name: Lint code
         run: make lint
-      - name: test
+
+      - name: Run tests
         run: make test
+
+      - name: Extract data
+        run: make extract
+
+      - name: Transform and load data
+        run: make transform
+
+      - name: Query data (join)
+        run: make query_join
+
+      - name: Query data (aggregate)
+        run: make query_aggregate
+
+      - name: Query data (sort)
+        run: make query_sort
+
+      - name: Generate and push SQL log
+        run: make generate_and_push
+
+      - name: Deploy
+        run: make deploy
